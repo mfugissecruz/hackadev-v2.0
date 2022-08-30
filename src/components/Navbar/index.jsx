@@ -2,7 +2,7 @@ import styles from "./Navbar.module.css";
 import { useState } from "react";
 import { FaShoppingCart, FaSearch, FaBars, FaUser } from "react-icons/fa";
 
-function Navbar() {
+export const Navbar = () => {
   const [active, setActive] = useState(styles.nav_list);
   const navToggle = () => {
     active === "styles.nav_list"
@@ -11,44 +11,45 @@ function Navbar() {
   };
 
   return (
+    <>
       <header>
         <nav>
-          <a to="/" className={styles.logo}>
+          <a href="/home" className={styles.logo}>
             <b>COZA</b> STORE
           </a>
           <ul className={active}>
             <li>
-              <a to="/">Home</a>
+              <a href="/home">Home</a>
             </li>
             <li>
-              <a to="/">Shop</a>
+              <a href="#">Shop</a>
             </li>
             <li>
-              <a to="/">Features</a>
+              <a href="#">Features</a>
             </li>
             <li>
-              <a to="/">Blog</a>
+              <a href="#">Blog</a>
             </li>
             <li>
-              <a to="/">About</a>
+              <a href="#">About</a>
             </li>
             <li>
-              <a to="/">Contact</a>
+              <a href="#">Contact</a>
             </li>
           </ul>
           <ul className={styles.nav_list2}>
             <li>
-              <a to="/">
+              <a href="#">
                 <FaUser />
               </a>
             </li>
             <li>
-              <a to="/">
+              <a href="#">
                 <FaSearch />
               </a>
             </li>
             <li className={styles.li2}>
-              <a to="/">
+              <a href="/cart">
                 <FaShoppingCart />
               </a>
             </li>
@@ -58,7 +59,6 @@ function Navbar() {
           </div>
         </nav>
       </header>
+    </>
   );
 }
-
-export default Navbar;

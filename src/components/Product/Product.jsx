@@ -5,7 +5,7 @@ function Product({ produto, preco, foto }) {
   return (
     <>
       <div class={styles.product}>
-        <a href="/">
+        <a href="/product">
           <FaHeart className={styles.svg} />
           <img src={foto} alt={produto} />
           <p>{produto}</p>

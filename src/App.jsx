@@ -1,21 +1,18 @@
-import Navbar from "./components/Navbar/Navbar";
-import Main from "./components/Main/Main";
-import Boxes from "./components/Boxes/Boxes";
-import Products from "./components/Products/Products";
-import Shop from "./components/Shop/Shop";
-import Footer from "./components/Footer/Footer";
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./routes"
+import { AuthProvider } from './contexts/auth';
+import GlobalStyle from './styles/global';
+
 
 function App() {
 
   return (
-    <>
-      <Navbar />
-      <Main />
-      <Boxes />
-      <Products />
-      <Shop />
-      <Footer />
-    </>
+    <AuthProvider>
+      <BrowserRouter>
+        <Router />
+        <GlobalStyle />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
