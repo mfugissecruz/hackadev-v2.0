@@ -43,46 +43,44 @@ class Product extends React.Component{
     const {products, index} = this.state;
     return(
         <>
-            <Navbar />
-                <div className="app">
-                {
-                products.map(item => (
-                    <div className="detalhes" key={item._id}>
-                    <div className="big-img">
-                        <img src={item.src[index]} alt=""/>
-                    </div>
-                    <div className="box">
-                        <div className="row">
-                        <h2>{item.title}</h2>
-                        <span>${item.price}</span>
-                        </div>
-                        <div className="colors">
-                        {
-                            item.colors.map((color, index) =>(
-                            <button style={{background: color}} key={index}></button>
-                            ))
-                        }
-                        </div>
-                        <p>{item.description}</p>
-                        <p>{item.content}</p>
+          <div className="app">
+          {
+          products.map(item => (
+              <div className="detalhes" key={item._id}>
+              <div className="big-img">
+                  <img src={item.src[index]} alt=""/>
+              </div>
+              <div className="box">
+                  <div className="row">
+                  <h2>{item.title}</h2>
+                  <span>${item.price}</span>
+                  </div>
+                  <div className="colors">
+                  {
+                      item.colors.map((color, index) =>(
+                      <button style={{background: color}} key={index}></button>
+                      ))
+                  }
+                  </div>
+                  <p>{item.description}</p>
+                  <p>{item.content}</p>
 
-                        <div className="thumb" ref={this.myRef}>
-                        {
-                            item.src.map((img, index) =>(
-                            <img src={img} alt="" key={index}
-                            onClick={() => this.handleTab(index)}
-                            />
-                            ))
-                        }
-                        </div>
-                        <button className="cart">Adicionar ao carrinho</button>
+                  <div className="thumb" ref={this.myRef}>
+                  {
+                      item.src.map((img, index) =>(
+                      <img src={img} alt="" key={index}
+                      onClick={() => this.handleTab(index)}
+                      />
+                      ))
+                  }
+                  </div>
+                  <button className="cart">Adicionar ao carrinho</button>
 
-                    </div>
-                    </div>
-                ))
-                }
-                </div>
-            <Footer />
+              </div>
+              </div>
+          ))
+          }
+          </div>
         </>    
     );
   };
