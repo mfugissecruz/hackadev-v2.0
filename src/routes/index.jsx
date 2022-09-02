@@ -4,6 +4,7 @@ import { Cart } from "../pages/Cart"
 import { Home } from "../pages/Home"
 import Signin from "../pages/Signin"
 import Signup from "../pages/Signup"
+import { Checkout } from "../pages/Checkout"
 
 export const Router = () => {
     return (
@@ -14,6 +15,7 @@ export const Router = () => {
             <Route path="*" element={<Signin />} />
             <Route element={ <Product /> } path="/product" />
             <Route element={ <Cart /> } path="/cart" />
+            <Route element={ <Checkout /> } path="/checkout" />
         </Routes>
     )
 }

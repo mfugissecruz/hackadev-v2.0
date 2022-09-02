@@ -1,4 +1,6 @@
 import React from 'react';
+import Footer from '../../components/Footer/Footer';
+import {Navbar} from '../../components/Navbar';
 import './styles.css';
 
 
@@ -41,6 +43,7 @@ class Product extends React.Component{
     const {products, index} = this.state;
     return(
         <>
+        <Navbar/>
           <div className="app">
           {
           products.map(item => (
@@ -81,6 +84,7 @@ class Product extends React.Component{
           ))
           }
           </div>
+          <Footer/>
         </>    
     );
   };
