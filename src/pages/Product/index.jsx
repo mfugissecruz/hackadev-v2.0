@@ -1,6 +1,4 @@
 import React from 'react';
-import Footer from '../../components/Footer/Footer';
-import {Navbar} from '../../components/Navbar';
 import './styles.css';
 
 
@@ -74,7 +72,9 @@ class Product extends React.Component{
                       ))
                   }
                   </div>
-                  <button className="cart">Adicionar ao carrinho</button>
+                  <a href="/cart">
+                    <button className="cart">Adicionar ao carrinho</button>
+                  </a>
 
               </div>
               </div>

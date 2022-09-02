@@ -2,11 +2,11 @@ import styles from "./Navbar.module.css";
 import { useState } from "react";
 import { FaShoppingCart, FaSearch, FaBars, FaUser } from "react-icons/fa";
 
-export const Navbar = () => {
+export function Navbar() {
   const [active, setActive] = useState(styles.nav_list);
   const navToggle = () => {
-    active === "styles.nav_list"
-      ? setActive(styles.nav_list.active)
+    active === styles.nav_list
+      ? setActive(styles.active)
       : setActive(styles.nav_list);
   };
 
@@ -14,12 +14,12 @@ export const Navbar = () => {
     <>
       <header>
         <nav>
-          <a href="/home" className={styles.logo}>
+          <a href="/" className={styles.logo}>
             <b>COZA</b> STORE
           </a>
           <ul className={active}>
             <li>
-              <a href="/home">Home</a>
+              <a href="/">Home</a>
             </li>
             <li>
               <a href="#">Shop</a>
@@ -39,12 +39,12 @@ export const Navbar = () => {
           </ul>
           <ul className={styles.nav_list2}>
             <li>
-              <a href="#">
+              <a href="/login">
                 <FaUser />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="">
                 <FaSearch />
               </a>
             </li>
