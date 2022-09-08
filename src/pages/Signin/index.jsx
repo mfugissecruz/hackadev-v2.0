@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import * as C from "./styles";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Signin = () => {
@@ -50,7 +50,7 @@ const Signin = () => {
         <C.LabelSignup>
           Não tem uma conta?
           <C.Strong>
-            <Link to="/signup">&nbsp;Registre-se</Link>
+            <a href="/signup">&nbsp;Registre-se</a>
           </C.Strong>
         </C.LabelSignup>
       </C.Content>
