@@ -1,6 +1,6 @@
+import { useState, useEffect } from "react";
 import Product from "../Product/Product";
 import styles from "./Shop.module.css";
-import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Shop() {
@@ -15,12 +15,15 @@ function Shop() {
       .catch((err) => console.log(err));
   }, []);
 
+  console.log(products);
+
   return (
     <div>
       <div className={styles.shop}>
         {products.length > 0 &&
           products.map((product) => (
             <Product
+              key={product.id}
               product={product.product}
               price={product.price}
               image={product.image}
