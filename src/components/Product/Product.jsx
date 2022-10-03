@@ -5,7 +5,7 @@ function Product(props) {
   return (
     <>
       <div className={styles.product}>
-        <a href="/product">
+        <a href={`products/${props.slug}`} >
           <FaHeart className={styles.svg} />
           <img src={props.image} alt={props.product}/>
           <p>{props.product}</p>
