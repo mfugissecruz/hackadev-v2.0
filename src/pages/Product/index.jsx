@@ -1,93 +1,43 @@
-import React from 'react';
-import Footer from '../../components/Footer/Footer';
 import {Navbar} from '../../components/Navbar';
-import './styles.css';
+import Footer from '../../components/Footer/Footer';
+import Product from '../../components/ProductDetail/Product';
+
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
-class Product extends React.Component{
+export const ProductDetail = () => {
+  const [product, setProduct] = useState([]);
+  const [colors, setColors] = useState([]);
 
-  state = {
-    products: [
-      {
-        "_id": "1",
-        "title": "Detalhe do produto",
-        "src": [
-  
-            "https://github.com/mfugissecruz/hackadev-fashion-shop/blob/main/images/index/product12.jpg?raw=true",
-            "https://github.com/mfugissecruz/hackadev-fashion-shop/blob/main/images/index/product13.jpg?raw=true",
-            "https://github.com/mfugissecruz/hackadev-fashion-shop/blob/main/images/index/product10.jpg?raw=true",
-            "https://github.com/mfugissecruz/hackadev-fashion-shop/blob/main/images/index/product15.jpg?raw=true"
-          ],
-        "description": "UI/UX designing, html css tutorials",
-        "content": "Welcome to our channel Dev AT. Here you can learn web designing, UI/UX designing, html css tutorials, css animations and css effects, javascript and jquery tutorials and related so on.",
-        "price": 23,
-        "colors":["red","black","crimson","teal"],
-        "count": 1
-      }
-    ],
-    index: 0
-  };
+  useEffect(() => {
+    axios
+      .get(
+        "https://my-simple-ecommerce-api.herokuapp.com/products/cropped-1/s?size=M"
+      )
+      .then((response) => {
+        setProduct(response.data[0]);
+        console.log(response.data[0]);
+        setColors(response.data.map((prod) => prod.color));
+        console.log(colors);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
-  myRef = React.createRef();
-
-  handleTab = index =>{
-    this.setState({index: index})
-    const images = this.myRef.current.children;
-    for(let i = 0; i < images.length; i++){
-      images[i].className = images[i].className.replace("active", "")
-    }
-    images[index].className = "active";
-  }
-
-  render(){
-    const {products, index} = this.state;
-    return(
-        <>
-        <Navbar/>
-          <div className="app">
-          {
-          products.map(item => (
-              <div className="detalhes" key={item._id}>
-              <div className="big-img">
-                  <img src={item.src[index]} alt=""/>
-              </div>
-              <div className="box">
-                  <div className="row">
-                  <h2>{item.title}</h2>
-                  <span>${item.price}</span>
-                  </div>
-                  <div className="colors">
-                  {
-                      item.colors.map((color, index) =>(
-                      <button style={{background: color}} key={index}></button>
-                      ))
-                  }
-                  </div>
-                  <p>{item.description}</p>
-                  <p>{item.content}</p>
-
-                  <div className="thumb" ref={this.myRef}>
-                  {
-                      item.src.map((img, index) =>(
-                      <img src={img} alt="" key={index}
-                      onClick={() => this.handleTab(index)}
-                      />
-                      ))
-                  }
-                  </div>
-                  <a href="/cart">
-                    <button className="cart">Adicionar ao carrinho</button>
-                  </a>
-
-              </div>
-              </div>
-          ))
-          }
-          </div>
-          <Footer/>
-        </>    
-    );
-  };
+  return (
+    <>
+      <Navbar />
+      <Product
+        product={product.product}
+        price={product.price}
+        category={product.category}
+        colors={colors}
+        slug={product.slug}
+        description={product.description}
+        image={product.image}
+      />
+      <Footer />
+    </>
+  );
 }
 
-export default Product;
