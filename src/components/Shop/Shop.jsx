@@ -15,8 +15,6 @@ function Shop() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(products);
-
   return (
     <div>
       <div className={styles.shop}>
@@ -28,6 +26,7 @@ function Shop() {
               price={product.price}
               image={product.image}
               slug={product.slug}
+              color={product.color}
             />
           ))}
       </div>
