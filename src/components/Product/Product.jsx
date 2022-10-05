@@ -5,7 +5,7 @@ export default function Product(props) {
   return (
     <>
       <div className={styles.product}>
-        <a href={`products/${props.slug}/p?color='${props.color}'`} >
+        <a href={`products/${props.slug}/s?color=${props.color}`} >
           <FaHeart className={styles.svg} />
           <img src={props.image} alt={props.product}/>
           <p>{props.product}</p>

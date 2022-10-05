@@ -7,13 +7,16 @@ import axios from "axios";
 
 
 export const ProductDetail = () => {
+  
+  const pathnameURL = document.location.pathname;
+
   const [product, setProduct] = useState([]);
   const [colors, setColors] = useState([]);
 
   useEffect(() => {
     axios
       .get(
-        "https://my-simple-ecommerce-api.herokuapp.com/products/cropped-1/s?size=M"
+        `https://my-simple-ecommerce-api.herokuapp.com${pathnameURL}?size=M`
       )
       .then((response) => {
         setProduct(response.data[0]);
@@ -28,6 +31,7 @@ export const ProductDetail = () => {
     <>
       <Navbar />
       <Product
+        product_id={product.id}
         product={product.product}
         price={product.price}
         category={product.category}
@@ -40,4 +44,3 @@ export const ProductDetail = () => {
     </>
   );
 }
-

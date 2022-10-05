@@ -2,6 +2,7 @@ import styles from "./Product.module.css";
 import "./Colors.css";
 
 function Product({
+  product_id,
   product,
   price,
   category,
@@ -10,6 +11,7 @@ function Product({
   image,
   slug,
 }) {
+
   return (
     <div className={styles.product}>
       <div className={styles.image}>
@@ -34,6 +36,7 @@ function Product({
           {colors.map((color) => (
             <a
               href={`https://my-simple-ecommerce-api.herokuapp.com/products/${slug}/s?size=M`}
+              key={colors}
             >
               <button className={`${color}`}>&nbsp;</button>
             </a>

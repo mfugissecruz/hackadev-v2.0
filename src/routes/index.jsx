@@ -13,7 +13,7 @@ export const Router = () => {
             <Route exact path="/logout" element={<Signup />} />
             <Route element={ <Home /> } path="/" />
             <Route path="*" element={<Signin />} />
-            <Route element={ <ProductDetail /> } path="/products/:slug/p" />
+            <Route element={ <ProductDetail /> } path="/products/:slug/s" />
             <Route element={ <Cart /> } path="/cart" />
             <Route element={ <Checkout /> } path="/checkout" />
         </Routes>

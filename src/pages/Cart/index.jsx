@@ -3,11 +3,6 @@ import  styles from './index.module.css';
 
 export const Cart = () => {
 
-    const getData = useSelector(state => state.cartReducer);
-    console.log(getData);
-
-    // const dispatch = useDispatch()
-
 
 
 
