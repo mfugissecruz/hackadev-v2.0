@@ -1,23 +1,24 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux'
+import { getProdutsByPilot } from '../../store/fetchActions'
+
 import Product from "../Product/Product";
 import styles from "./Shop.module.css";
-import axios from "axios";
+
 
 function Shop() {
-  const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("https://my-simple-ecommerce-api.herokuapp.com/")
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const products = useSelector(state => state.products);
+  const dispatch = useDispatch()
 
+  useEffect(() =>{
+    dispatch(getProdutsByPilot())
+  },[dispatch])
+  
   return (
     <div>
       <div className={styles.shop}>
+
         {products.length > 0 &&
           products.map((product) => (
             <Product

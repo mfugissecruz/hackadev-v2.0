@@ -1,22 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import axios from 'axios'
 
-const INITIAL_STATE = 
-    axios.get("https://my-simple-ecommerce-api.herokuapp.com/")
-        .then(response => response.data)
-        .catch(error => console.log(error))
+import productsReducer from './ducks/products';
+// import cartReducer from '../ducks/cart;
 
-
-function reducer(state = INITIAL_STATE, action){
-    return state
-}
-
-const store = configureStore({
+export default configureStore({
     reducer: {
-        reducer
+        products: productsReducer,
+        // cart: cartReducer
     }
 });
-
-export default store;
-
-
