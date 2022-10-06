@@ -2,7 +2,6 @@ import styles from "./Product.module.css";
 import "./Colors.css";
 
 function Product({
-  product_id,
   product,
   price,
   category,
@@ -10,6 +9,7 @@ function Product({
   description,
   image,
   slug,
+  addItemCart
 }) {
 
   return (
@@ -22,7 +22,7 @@ function Product({
         <h2>{product}</h2>
         <p className={styles.price}>R{price}</p>
         <p className={styles.description}>{description}</p>
-        <form action="submit">
+        <section>
           <h3>Sizes</h3>
           <div className={styles.sizes}>
             <label htmlFor="size">P</label>
@@ -41,12 +41,12 @@ function Product({
               <button className={`${color}`}>&nbsp;</button>
             </a>
           ))}
-          <input
+          <button
             className={styles.addcart}
             type="submit"
-            value="Adicionar ao carrinho"
-          />
-        </form>
+            onClick={() => addItemCart(productInfo)}
+          >Adicionar ao carrinho</button>
+        </section>
       </div>
     </div>
   );

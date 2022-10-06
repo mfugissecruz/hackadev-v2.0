@@ -5,7 +5,6 @@ import Product from '../../components/ProductDetail/Product';
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 export const ProductDetail = () => {
   
   const pathnameURL = document.location.pathname;
@@ -31,7 +30,6 @@ export const ProductDetail = () => {
     <>
       <Navbar />
       <Product
-        product_id={product.id}
         product={product.product}
         price={product.price}
         category={product.category}

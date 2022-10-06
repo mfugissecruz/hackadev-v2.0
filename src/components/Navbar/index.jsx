@@ -1,6 +1,7 @@
 import styles from "./Navbar.module.css";
 import { useState } from "react";
 import { FaShoppingCart, FaSearch, FaBars, FaUser } from "react-icons/fa";
+import { Cart } from "../../pages/Cart";
 
 export function Navbar() {
   const [active, setActive] = useState(styles.nav_list);
@@ -9,6 +10,15 @@ export function Navbar() {
       ? setActive(styles.active)
       : setActive(styles.nav_list);
   };
+
+  const handleOpenSidebar = () => {
+    const cart = document.querySelector('#sidebar').classList
+      if(cart.contains('sidebar--isHidden')){
+        cart.remove('sidebar--isHidden')
+      }
+    }
+
+
 
   return (
     <>
@@ -49,7 +59,9 @@ export function Navbar() {
               </a>
             </li>
             <li className={styles.li2}>
-              <a href="/cart">
+              <a 
+                onClick={handleOpenSidebar}
+              >
                 <FaShoppingCart />
               </a>
             </li>
@@ -59,6 +71,10 @@ export function Navbar() {
           </div>
         </nav>
       </header>
+      <div id="cart">
+        <Cart/>
+
+      </div>
     </>
   );
 }
