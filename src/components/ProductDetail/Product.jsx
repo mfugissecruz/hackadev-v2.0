@@ -9,9 +9,8 @@ function Product({
   description,
   image,
   slug,
-  addItemCart
+  addItemCart,
 }) {
-
   return (
     <div className={styles.product}>
       <div className={styles.image}>
@@ -34,10 +33,7 @@ function Product({
           </div>
           <h3>Colors</h3>
           {colors.map((color) => (
-            <a
-              href={`https://my-simple-ecommerce-api.herokuapp.com/products/${slug}/s?size=M`}
-              key={colors}
-            >
+            <a href={`/products/${slug}/?color=${color}`} key={color}>
               <button className={`${color}`}>&nbsp;</button>
             </a>
           ))}
@@ -45,7 +41,9 @@ function Product({
             className={styles.addcart}
             type="submit"
             onClick={() => addItemCart(productInfo)}
-          >Adicionar ao carrinho</button>
+          >
+            Adicionar ao carrinho
+          </button>
         </section>
       </div>
     </div>
@@ -53,3 +51,5 @@ function Product({
 }
 
 export default Product;
+
+// https://my-simple-ecommerce-api.herokuapp.com/products/${slug}/p?color=${color}
