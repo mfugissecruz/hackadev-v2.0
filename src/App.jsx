@@ -2,20 +2,20 @@ import { BrowserRouter } from "react-router-dom";
 import { Router } from "./routes"
 import { AuthProvider } from './contexts/auth';
 
-import GlobalStyle from './styles/global';
+import { Provider } from 'react-redux';
+import { store } from './redux'
 
-import { Provider } from 'react-redux'
-import store from "./store";
+import GlobalStyle from './styles/global';
 
 function App() {
   return (
     <AuthProvider>
-      <Provider store={store}>
-          <BrowserRouter>
-            <Router />
-            <GlobalStyle />
-          </BrowserRouter>
-      </Provider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <Router />
+        </Provider>
+        <GlobalStyle />
+      </BrowserRouter>
     </AuthProvider>
   );
 }

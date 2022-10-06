@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { getProdutsByPilot } from '../../store/fetchActions'
+import { getProdutsByPilot } from '../../redux/fetchActions'
 
 import Product from "../Product/Product";
 import styles from "./Shop.module.css";
@@ -19,15 +19,11 @@ function Shop() {
     <div>
       <div className={styles.shop}>
 
-        {products.length > 0 &&
-          products.map((product) => (
+        {
+          products?.map((product) => (
             <Product
               key={product.id}
-              product={product.product}
-              price={product.price}
-              image={product.image}
-              slug={product.slug}
-              color={product.color}
+              productInfo={product}
             />
           ))}
       </div>

@@ -1,7 +1,7 @@
 import styles from "./Navbar.module.css";
 import { useState } from "react";
 import { FaShoppingCart, FaSearch, FaBars, FaUser } from "react-icons/fa";
-import { Cart } from "../../pages/Cart";
+import { Cart } from "../Cart";
 
 export function Navbar() {
   const [active, setActive] = useState(styles.nav_list);
