@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { CartItem } from './CartItem';
 
 import { VscChromeClose } from 'react-icons/vsc'
+import { useState } from 'react';
 
 export const Cart = () => {
  
@@ -32,6 +33,8 @@ export const Cart = () => {
         })
         return {totalPrice, totalQuantity}
     }
+
+    const [checkout, setCheckout] = useState(false)
 
     return (
         <div>
@@ -74,9 +77,12 @@ export const Cart = () => {
                                 
                                 <span>{valueFormated(getTotal().totalPrice)}</span>
                             </div>
-                            <div className='btn-buy'>
+                            <button
+                                onClick={() => setCheckout(true)}
+                                className='btn-buy'
+                            >
                                 finalizar compra
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>

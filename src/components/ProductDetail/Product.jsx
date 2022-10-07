@@ -55,7 +55,7 @@ function Product({
           <h3>Colors</h3>
           {colors.map((color) => (
             <a href={`/products/${slug}/?color=${color}`} key={color}>
-              <button className={`${color}`}>&nbsp;</button>
+              <button className={styles.btnColor}>&nbsp;</button>
             </a>
           ))}
           <button
