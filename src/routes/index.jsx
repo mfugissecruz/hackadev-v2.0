@@ -4,6 +4,7 @@ import { Home } from "../pages/Home";
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 import { Checkout } from "../pages/Checkout";
+import { PageNotFound } from '../pages/PageNotFound'
 
 export const Router = () => {
   return (
@@ -11,7 +12,7 @@ export const Router = () => {
       <Route path="/login" element={<Signin />} />
       <Route exact path="/logout" element={<Signup />} />
       <Route element={<Home />} path="/" />
-      <Route path="*" element={<Signin />} />
+      <Route path="*" element={<PageNotFound />} />
       <Route element={<ProductDetail />} path="/products/:slug/" />
       <Route element={<Checkout />} path="/checkout" />
     </Routes>
