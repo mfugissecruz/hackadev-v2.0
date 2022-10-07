@@ -31,7 +31,7 @@ function Products() {
         <div className={styles.buttons}>
           <button className="filter">
             <a href="/">
-              <FaFilter /> Filter
+              <FaFilter className="filter" /> Filter
             </a>
           </button>
           <button className="find">

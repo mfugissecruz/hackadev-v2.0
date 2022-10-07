@@ -1,8 +1,7 @@
 import styles from "./Product.module.css";
 import "./Colors.css";
-
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../../redux/ducks/cart/cartSlice';
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/ducks/cart/cartSlice";
 
 function Product({
   key,
@@ -15,8 +14,7 @@ function Product({
   slug,
   addItemCart,
 }) {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.product}>
@@ -46,13 +44,19 @@ function Product({
           ))}
           <button
             className={styles.addcart}
-            onClick={() => dispatch(addToCart({ 
-              id: key,
-              title: product, 
-              image, 
-              price
-            }))}
-          >Adicionar ao carrinho</button>
+            onClick={() =>
+              dispatch(
+                addToCart({
+                  id: key,
+                  title: product,
+                  image,
+                  price,
+                })
+              )
+            }
+          >
+            Adicionar ao carrinho
+          </button>
         </section>
       </div>
     </div>
