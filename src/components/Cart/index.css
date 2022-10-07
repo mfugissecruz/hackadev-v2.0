@@ -1,7 +1,7 @@
 .sidebar {
     background-color: #18181b;
     color: #FFF;
-    width: 20rem;
+    width: 25rem;
     height: 92vh;
     padding: 0;
     position: fixed;
@@ -11,7 +11,7 @@
     z-index: 10;
 }
 .sidebar--isHidden {
-    transform: translateX(25rem);
+    transform: translateX(27rem);
     transition: transform 300ms ease-out;
 }
 
