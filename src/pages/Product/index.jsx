@@ -45,6 +45,7 @@ export const ProductDetail = () => {
         slug={product.slug}
         description={product.description}
         image={product.image}
+        id={product.id}
       />
       <Footer />
     </>

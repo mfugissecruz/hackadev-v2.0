@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/ducks/cart/cartSlice";
 
 function Product({
-  key,
+  id,
   product,
   price,
   category,
@@ -12,7 +12,6 @@ function Product({
   description,
   image,
   slug,
-  addItemCart,
 }) {
   const dispatch = useDispatch();
 
@@ -47,7 +46,7 @@ function Product({
             onClick={() =>
               dispatch(
                 addToCart({
-                  id: key,
+                  id,
                   title: product,
                   image,
                   price,

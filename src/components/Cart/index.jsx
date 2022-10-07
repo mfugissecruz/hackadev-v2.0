@@ -14,7 +14,7 @@ export const Cart = () => {
         }
     }
     
-    const itemInfo = useSelector(state => state.persistedReducer.cart)
+    const itemInfo = useSelector(state => state.cart.cart)
 
     const getTotal = () => {
         let totalQuantity = 0
