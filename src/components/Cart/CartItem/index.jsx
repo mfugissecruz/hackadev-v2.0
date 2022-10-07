@@ -14,7 +14,6 @@ export const CartItem = ({ item }) => {
     }
 
     let priceTotalItem = item.price.slice(1)
-    console.log(priceTotalItem * item.quantity);
 
     const dispatch = useDispatch()
     return (
