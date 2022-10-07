@@ -3,7 +3,7 @@ import { ProductDetail } from "../pages/Product";
 import { Home } from "../pages/Home";
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
-import { Checkout } from "../pages/Checkout";
+import { CheckoutModal } from "../pages/Checkout";
 import { PageNotFound } from '../pages/PageNotFound'
 
 export const Router = () => {
@@ -14,7 +14,7 @@ export const Router = () => {
       <Route element={<Home />} path="/" />
       <Route path="*" element={<PageNotFound />} />
       <Route element={<ProductDetail />} path="/products/:slug/" />
-      <Route element={<Checkout />} path="/checkout" />
+      <Route element={<CheckoutModal />} path="/checkout" />
     </Routes>
   );
 };

@@ -5,7 +5,12 @@ import { CartItem } from './CartItem';
 import { VscChromeClose } from 'react-icons/vsc'
 
 export const Cart = () => {
-
+ 
+    const valueFormated = (value) =>{
+        return new Intl.NumberFormat(
+            'pt-BR', 
+            { style: 'currency', currency: 'BRL' }).format(value)
+    }
     
     const handleCloseCart = () => {
         const cart = document.querySelector('#sidebar').classList
@@ -21,7 +26,7 @@ export const Cart = () => {
         let totalPrice = 0
         itemInfo.forEach(item => {
             totalQuantity+=item.quantity;
-            totalPrice+=item.totalPrice * item.quantity
+            totalPrice+= (item.price).slice(1) * item.quantity
         })
         return {totalPrice, totalQuantity}
     }
@@ -62,7 +67,10 @@ export const Cart = () => {
                                     : 
                                         getTotal().totalQuantity+' items'})
                                 </span>
-                                <span>R$ {getTotal().totalPrice}</span>
+
+                
+                                
+                                <span>{valueFormated(getTotal().totalPrice)}</span>
                             </div>
                             <div className='btn-buy'>
                                 finalizar compra

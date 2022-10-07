@@ -7,6 +7,15 @@ import { decrementQuantity, incrementQuantity, removeItem} from '../../../redux/
 
 export const CartItem = ({ item }) => {
 
+    const valueFormated = (value) =>{
+        return new Intl.NumberFormat(
+            'pt-BR', 
+            { style: 'currency', currency: 'BRL' }).format(value)
+    }
+
+    let priceTotalItem = item.price.slice(1)
+    console.log(priceTotalItem * item.quantity);
+
     const dispatch = useDispatch()
     return (
         <div className="item-content">
@@ -14,18 +23,19 @@ export const CartItem = ({ item }) => {
                 <img src={item.image} alt={item.title} />
             </div>
             <div className="item-description">
-                <div>
+                <div >
                     <div className="product-title">
                         <span>{item.title}</span>
 
-                        <span 
-                            style={{ cursor: "pointer" }}
-                            onClick={() => dispatch(removeItem(item.id))}
-                        ><VscTrash/></span>
+                    <span
+                        className='trash'
+                        style={{ cursor: "pointer" }}
+                        onClick={() => dispatch(removeItem(item.id))}
+                    ><VscTrash/></span>
                     </div>
 
                     <div className="product-size">
-                        VALOR: R$ { item.price }
+                        VALOR: { valueFormated(priceTotalItem) }
                     </div>
                 </div>
 
@@ -41,7 +51,9 @@ export const CartItem = ({ item }) => {
                             onClick={() => dispatch(incrementQuantity(item.id))}   
                         > + </span>
                     </div> 
-                    <span> Total: R${item.quantity * item.price}</span>
+                    <span style={{ marginTop: '12px' }}> 
+                        Total: R${ valueFormated(item.quantity * priceTotalItem) }
+                    </span>
                 </div>
             </div>    
         </div>

@@ -1,0 +1,42 @@
+.checkout {
+  background: #18181b;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.7;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem;
+}
+
+.checkout-form {
+  width: 75vh;
+  height: 90vh;
+  background: #e4e4e7;
+  border-radius: 1rem;
+  padding: 1.2rem;
+}
+
+.listProducts,
+.form-username {
+  border: 1px solid #18181b;
+  border-radius: .5rem;
+  padding: 1rem;
+  margin-top: 12px;;
+}
+
+.listProducts ul {
+  list-style: none;
+}
+
+
+@media only screen and (max-width: 500px) {
+  .checkout-form {
+    width: 50vh;
+    height: 90vh;
+
+    background-color: aqua;
+  }  
+}  
+

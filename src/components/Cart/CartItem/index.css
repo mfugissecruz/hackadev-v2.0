@@ -25,6 +25,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    width: 100%;
+}
+
+.trash {
+    position: absolute;
+    right: 0;
 }
 
 .item-description .product-title {
@@ -38,8 +45,11 @@
 }
 
 .item-description .item-quantity {
-    gap: 20px;
-    align-items: center;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .item-description .item-quantity .box-quantity {
