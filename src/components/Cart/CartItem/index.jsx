@@ -13,7 +13,7 @@ export const CartItem = ({ item }) => {
             { style: 'currency', currency: 'BRL' }).format(value)
     }
 
-    let priceTotalItem = item.price.slice(1)
+    let priceTotalItem = item.price?.slice(1)
 
     const dispatch = useDispatch()
     return (

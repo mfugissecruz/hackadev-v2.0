@@ -21,6 +21,8 @@ export const Cart = () => {
     
     const itemInfo = useSelector(state => state.cart.cart)
 
+    console.log(itemInfo);
+
     const getTotal = () => {
         let totalQuantity = 0
         let totalPrice = 0

@@ -15,6 +15,23 @@ function Product({
 }) {
   const dispatch = useDispatch();
 
+  const handleOpenSidebar = () => {
+    document.querySelector('#sidebar').classList.remove('sidebar--isHidden')
+  
+  }
+
+  const addItemInCart = () => {
+    handleOpenSidebar()
+    dispatch(
+      addToCart({
+        id,
+        title: product,
+        image,
+        price,
+      })
+    )
+  }
+
   return (
     <div className={styles.product}>
       <div className={styles.image}>
@@ -43,16 +60,7 @@ function Product({
           ))}
           <button
             className={styles.addcart}
-            onClick={() =>
-              dispatch(
-                addToCart({
-                  id,
-                  title: product,
-                  image,
-                  price,
-                })
-              )
-            }
+            onClick={addItemInCart}
           >
             Adicionar ao carrinho
           </button>
