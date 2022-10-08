@@ -13,7 +13,7 @@ export const CartItem = ({ item }) => {
             { style: 'currency', currency: 'BRL' }).format(value)
     }
 
-    let priceTotalItem = item.price?.slice(1)
+    let priceItem = item.price?.slice(1)
 
     const dispatch = useDispatch()
     return (
@@ -34,7 +34,7 @@ export const CartItem = ({ item }) => {
                     </div>
 
                     <div className="product-size">
-                        VALOR: { valueFormated(priceTotalItem) }
+                        VALOR: { valueFormated(priceItem) }
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@ export const CartItem = ({ item }) => {
                         > + </span>
                     </div> 
                     <span style={{ marginTop: '12px' }}> 
-                        Total: R${ valueFormated(item.quantity * priceTotalItem) }
+                        Total: R${ valueFormated(item.quantity * priceItem) }
                     </span>
                 </div>
             </div>    

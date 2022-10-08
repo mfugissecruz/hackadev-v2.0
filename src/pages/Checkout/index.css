@@ -1,27 +1,27 @@
 .checkout {
-  background: #18181b;
   width: 100vw;
   height: 100vh;
-  opacity: 0.7;
+  opacity: 0.9;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2.5rem;
+  padding: 1.5rem;
 }
 
-.checkout-form {
+.checkout-content {
   width: 75vh;
   height: 90vh;
-  background: #e4e4e7;
   border-radius: 1rem;
   padding: 1.2rem;
+  background-color: white;
+
+  overflow: auto;
 }
 
 .listProducts,
-.form-username {
-  border: 1px solid #18181b;
-  border-radius: .5rem;
+.form-username,
+.form-user-addres {
   padding: 1rem;
   margin-top: 12px;;
 }
@@ -30,13 +30,84 @@
   list-style: none;
 }
 
+.items-list li + li {
+  margin: 1rem 0;
+}
+
+.item-image {
+  border-radius: 8px;
+}
+
+.item-cart {
+  display: flex;
+  gap: .75rem;
+  align-items: center;
+
+}
+
+.item-cart .item-cart-description {
+  display: flex;
+  align-items: center;
+  /* flex-direction: row; */
+  gap: 1rem;
+  
+}
+
+/* form */
+.form-username,
+.form-user-addres {
+  margin-bottom: .75rem;
+}
+.form-username label, 
+.form-user-addres label {
+  font-size: 1rem;
+  margin-bottom: .75rem;
+}
+
+.form-username input, 
+.form-user-addres input {
+  font-size: 1rem;
+  margin-bottom: .75rem;
+  padding: .5rem;
+  width: 100%;
+}
+
+.form-user-addres {
+  margin-top: .75rem;
+}
+
+.btn-field {
+  width: 100%;
+  text-align: center;
+}
+
+.btn-payment-form {
+  width: 50%;
+  height: 2rem;
+
+  margin: .75rem;
+
+  border-radius: 8px;
+  border: none;
+
+  background: green;
+  color: #FFF;
+
+  text-transform: uppercase;
+  cursor: pointer;
+
+  text-align: center;
+}
+
 
 @media only screen and (max-width: 500px) {
   .checkout-form {
     width: 50vh;
     height: 90vh;
+  }
 
-    background-color: aqua;
-  }  
-}  
-
+  .item-cart .item-cart-description {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
