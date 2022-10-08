@@ -1,9 +1,11 @@
-import './index.css';
+
 import { useSelector } from 'react-redux'
+
 import { CartItem } from './CartItem';
 
 import { VscChromeClose } from 'react-icons/vsc'
-import { useState } from 'react';
+import './index.css';
+import { CheckoutModal } from '../Modal';
 
 export const Cart = () => {
  
@@ -22,8 +24,6 @@ export const Cart = () => {
     
     const itemInfo = useSelector(state => state.cart.cart)
 
-    console.log(itemInfo);
-
     const getTotal = () => {
         let totalQuantity = 0
         let totalPrice = 0
@@ -33,11 +33,10 @@ export const Cart = () => {
         })
         return {totalPrice, totalQuantity}
     }
-
-    const [checkout, setCheckout] = useState(false)
-
+  
     return (
         <div>
+                
             <div className='container'>
                 <div id="sidebar" className='sidebar sidebar--isHidden'>
                     <div className='sidebar-content'>
@@ -66,28 +65,25 @@ export const Cart = () => {
                         
                         <div className='footer'>
                             <div className="subtotal">
-                                <span>subtotal: ({
+                                <span >subtotal: ({
                                     getTotal().totalQuantity === 1 ?
                                         getTotal().totalQuantity + ' item' 
                                     : 
                                         getTotal().totalQuantity+' items'})
                                 </span>
-
-                
-                                
                                 <span>{valueFormated(getTotal().totalPrice)}</span>
                             </div>
-                            <button
-                                onClick={() => setCheckout(true)}
-                                className='btn-buy'
-                            >
-                                finalizar compra
-                            </button>
+                                    <CheckoutModal />
+                                <button
+                                    className='btn-buy'
+                                >
+                                    finalizar compra
+                                </button>
                         </div>
                     </div>
                 </div>
             </div>
-
+            
         </div>
     )
 }
