@@ -23,18 +23,14 @@ export const CheckoutModal = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validationForm)
     });
-    const createOrder = data => axios.post("http://localhost:3333/orders", data)
+    const createOrder = data => axios.post("https://my-simple-ecommerce-api.herokuapp.com/orders", data)
         .then(() => {
             console.log("Deu bão!");
         })
         .catch(() => {
             console.log("Deu ruim!");
         });
-
-    // const createOrder = data => console.log(data);
-
-
-    
+ 
     return (
             
     <div className="container-checkout ">
