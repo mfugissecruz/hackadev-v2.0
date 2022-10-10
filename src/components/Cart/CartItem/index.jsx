@@ -51,7 +51,7 @@ export const CartItem = ({ item }) => {
                         > + </span>
                     </div> 
                     <span style={{ marginTop: '12px' }}> 
-                        Total: R${ valueFormated(item.quantity * priceItem) }
+                        Total: { valueFormated(item.quantity * priceItem) }
                     </span>
                 </div>
             </div>    
