@@ -1,93 +1,126 @@
+// import { useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup'
+import { Link } from 'react-router-dom';
+import axios from 'axios'
+import flagCard from './card_img.png'
 import './index.css'
-import { useSelector } from 'react-redux';
+
+const validationForm = yup.object().shape({
+    customer_name: yup.string().required().max(100, "digite no máximo 100 caracteres"),
+    customer_phone: yup.string().required().max(11, "digite no máximo 100 caracteres")
+})
 
 export const CheckoutModal = () => {
-    const items = useSelector(state => state.cart.cart);
-    // console.log(items);
-    
-    const valueFormated = (value) =>{
-        return new Intl.NumberFormat(
-            'pt-BR', 
-            { style: 'currency', currency: 'BRL' }).format(value)
-    }
+    // const items = useSelector(state => state.cart.cart);
+    // const valueFormated = (value) =>{
+    //     return new Intl.NumberFormat(
+    //         'pt-BR', 
+    //         { style: 'currency', currency: 'BRL' }).format(value)
+    // }
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(validationForm)
+    });
+    const createOrder = data => axios.post("http://localhost:3333/orders", data)
+        .then(() => {
+            console.log("Deu bão!");
+        })
+        .catch(() => {
+            console.log("Deu ruim!");
+        });
+
+    // const createOrder = data => console.log(data);
+
+
     
     return (
-
-        <div className="checkout">
-            <div 
-                className="checkout-content"
-                method='POST'
-                action='#'
+            
+    <div className="container-checkout ">
+        <div className='container-glass'>
+            <form 
+                method="POST"
+                onSubmit={handleSubmit(createOrder)}
             >
-                <div className="checkout-container">
+                <div className="row">
+                    <div className="col">
+                        <h3 className="title">Dados do Destinatário</h3>
 
-                    <div className="listProducts">
-                        <ul className='items-list'>
-                            {
-                                items.map(item => (
-                                    <li key={item.id}>
-                                        <div className='item-cart'>
-                                            <img 
-                                                className='item-image'
-                                                src={item.image} 
-                                                alt={item.produto} 
-                                                width={80} 
-                                                height={80} 
-                                            />
-                                            <div className='item-cart-description'>
-                                                <span>{item.title}</span>
-                                                <span>{valueFormated(item.quantity * item.price?.slice(1))}</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                        <hr />
+                        <div className="inputBox">
+                            <span>Nome Completo:</span>
+                            <input type="text" placeholder="Jhon Doe" name='customer_name' { ...register("customer_name") } />
+
+                            {/* TODO */}
+                            {/* <p className='error-message'>{errors.customer_name?.message}</p> */}
+                        </div>
+                        <div className="inputBox">
+                            <span>Email:</span>
+                            <input type="email" placeholder="jhondoe@example.com" />
+                        </div>
+                        <div className="inputBox">
+                            <span>Celular</span>
+                            <input type="phone" placeholder="62 9 XXXX-XXXX" name='customer_phone' { ...register('customer_phone') } />
+                        </div>
+                        <div className="inputBox">
+                            <span>Endereço:</span>
+                            <input type="text" placeholder="Rua ABC, número X, setor XYZ" />
+                        </div>
+                        <div className="inputBox">
+                            <span>Cidade:</span>
+                            <input type="text" placeholder="Goiânia" />
+                        </div>
+                        <div className="flex">
+                            <div className="inputBox">
+                                <span>Estado: :</span>
+                                <input type="text" placeholder="Goiás" />
+                            </div>
+                            <div className="inputBox">
+                                <span>CEP:</span>
+                                <input type="text" placeholder="74.001-970" />
+                            </div>
+                        </div>
                     </div>
 
-                    <form className="userdata">
-                        <div className='form-username'>
-                            <label htmlFor="first_name" className='usernama-label'>Nome:</label>
-                            <input id="first_name" name="first_name" type="text" placeholder="Jhon" required/>
-                            <label htmlFor="last_name">Sobrenome:</label>
-                            <input id="last_name" name="last_name" type="text" placeholder='Doe' required/>
-                            <label htmlFor="email">Email:</label>
-                            <input id="email" name="email" type="email" placeholder='jhondoe@email.com' required/>
-                            <label htmlFor="phone">Telefone:</label>
-                            <input id="phone" name="phone" type="phone" placeholder='(99)99999-9999' required/>
-                            <label htmlFor="cpf">CPF:</label>
-                            <input id="cpf" name="cpf" type="cpf" placeholder='123.456.789-00' required/>
-                        </div>
-                        <hr/>
-                        <div className="form-user-addres">
-                            <label htmlFor="zip_code">CEP:</label>
-                            <input id="zip_code" name="zip_code" type="text" placeholder='123.456.789-00' required/>
-                            <label htmlFor="street" className='usernama-label'>Rua:</label>
-                            <input id="street" name="street" type="text" placeholder="Jhon" required/>
-                            <label htmlFor="address_number">Número:</label>
-                            <input id="address_number" name="address_number" type="text" placeholder='Doe' required/>
-                            <label htmlFor="complement">Complemento:</label>
-                            <input id="complement" name="complement" type="text" placeholder='jhondoe@email.com' required/>
-                            <label htmlFor="neighborhood">Bairro:</label>
-                            <input id="neighborhood" name="neighborhood" type="text" placeholder='(99)99999-9999' required/>
-                            <label htmlFor="city">Cidade:</label>
-                            <input id="city" name="city" type="text" placeholder='123.456.789-00' required/>
-                        </div>
-                        <hr/>
-                        <div className='btn-field'>
-                            <button
-                                className='btn-payment-form'
-                                type='submit'
-                                disabled
-                            >Salvar Dados</button>
-                        </div>
-                    </form>
-                    
-                    
-                </div>
-            </div>
+                    <div className="col">
+                        <h3 className="title">Dados para pagamento</h3>
 
+                        <div className="inputBox">
+                            <span>Cartões aceitos:</span>
+                            <img src={flagCard} alt="bandeiras de cartão" />
+                        </div>
+                        <div className="inputBox">
+                            <span>Nome do Titular:</span>
+                            <input type="text" placeholder="Jhon Doe" />
+                        </div>
+                        <div className="inputBox">
+                            <span>Número do Cartão:</span>
+                            <input type="number" placeholder="1111-2222-3333-4444" />
+                        </div>
+                        <div className="inputBox">
+                            <span>Mês valid.:</span>
+                            <input type="text" placeholder="ex: janeiro" />
+                        </div>
+                        <div className="flex">
+                            <div className="inputBox">
+                                <span>Ano valid. :</span>
+                                <input type="number" placeholder="2022" />
+                            </div>
+                            <div className="inputBox">
+                                <span>CVV:</span>
+                                <input type="text" placeholder="1234" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="finalizar o pagamento" className="submit-btn" />
+                <div className='link-buy'>
+                    <Link to="/">Continuar comprando</Link>
+                </div>
+            </form>
         </div>
+    </div>
+
+
     )
 }
