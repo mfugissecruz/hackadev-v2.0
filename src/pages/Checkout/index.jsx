@@ -104,7 +104,7 @@ export const CheckoutModal = () => {
                 </div>
                 <input type="submit" value="finalizar o pagamento" className="submit-btn" />
                 <div className='link-buy'>
-                    <a href="/">Continuar comprando</a>
+                    <a href="/" style={{ color: "black" }}>Continuar comprando</a>
                 </div>
             </form>
         </div>
