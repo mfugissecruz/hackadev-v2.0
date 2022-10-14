@@ -6,6 +6,7 @@ import { CartItem } from './CartItem';
 import { VscChromeClose } from 'react-icons/vsc'
 import './index.css';
 import { CheckoutModal } from '../Modal';
+import { Link } from 'react-router-dom';
 
 export const Cart = () => {
  
@@ -74,11 +75,13 @@ export const Cart = () => {
                                 <span>{valueFormated(getTotal().totalPrice)}</span>
                             </div>
                                     <CheckoutModal />
+                            <Link to="/checkout">
                                 <button
                                     className='btn-buy'
                                 >
                                     finalizar compra
                                 </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

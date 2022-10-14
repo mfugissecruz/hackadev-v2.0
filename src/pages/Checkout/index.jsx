@@ -1,4 +1,3 @@
-// import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
@@ -13,12 +12,6 @@ const validationForm = yup.object().shape({
 })
 
 export const CheckoutModal = () => {
-    // const items = useSelector(state => state.cart.cart);
-    // const valueFormated = (value) =>{
-    //     return new Intl.NumberFormat(
-    //         'pt-BR', 
-    //         { style: 'currency', currency: 'BRL' }).format(value)
-    // }
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validationForm)
@@ -27,8 +20,8 @@ export const CheckoutModal = () => {
         .then(() => {
             console.log("Deu bão!");
         })
-        .catch(() => {
-            console.log("Deu ruim!");
+        .catch(error => {
+            console.log(error);
         });
  
     return (
@@ -111,7 +104,7 @@ export const CheckoutModal = () => {
                 </div>
                 <input type="submit" value="finalizar o pagamento" className="submit-btn" />
                 <div className='link-buy'>
-                    <Link to="/">Continuar comprando</Link>
+                    <a href="/">Continuar comprando</a>
                 </div>
             </form>
         </div>
